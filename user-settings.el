@@ -21,14 +21,18 @@
 (setq-default truncate-lines 0)       ; Truncate lines off by default
 
 
-;; recentf
+;; helm-recentf
 (require 'recentf)    ;; save recently used files
 (setq
  recentf-save-file "~/.emacs.d/cache/recentf"
  recentf-max-saved-items 100     ;; max save 100
  recentf-max-menu-items 15)      ;; max 15 in menu
-(recentf-mode t)                  ;; turn it on
-(global-set-key (kbd "C-c C-r") 'recentf-open-files)
+(recentf-mode t)                 ;; turn it on
+(global-set-key (kbd "C-c C-x C-r") 'helm-recentf)
+
+
+;; Helm buffer
+(global-set-key (kbd "s-b") 'helm-buffers-list)
 
 
 ;; webjump
@@ -123,3 +127,9 @@
 ;; Org mode is better with visual line mode
 (add-hook 'org-mode 'visual-line-mode)
 
+
+
+
+
+;; Open up global TODO on startup
+(find-file "~/Desktop/PROJECTS.org")

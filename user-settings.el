@@ -21,7 +21,13 @@
 (setq-default truncate-lines 0)       ; Truncate lines off by default
 
 
-;; helm-recentf
+;; UTF PLEASE
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;;;; helm
+;; recentf
 (require 'recentf)    ;; save recently used files
 (setq
  recentf-save-file "~/.emacs.d/cache/recentf"
@@ -29,10 +35,10 @@
  recentf-max-menu-items 15)      ;; max 15 in menu
 (recentf-mode t)                 ;; turn it on
 (global-set-key (kbd "C-c C-x C-r") 'helm-recentf)
-
-
-;; Helm buffer
+;; buffer list
 (global-set-key (kbd "s-b") 'helm-buffers-list)
+;; Helm find file
+(global-set-key (kbd "M-o") 'helm-find-files)
 
 
 ;; webjump
@@ -119,16 +125,18 @@
 (windmove-default-keybindings)
 (define-key global-map(kbd "C-;") 'windmove-left-thorough)
 (define-key global-map(kbd "C-'") 'windmove-right-thorough)
-(key-chord-define-global "ja" 'windmove-left-thorough)
-(key-chord-define-global "jw" 'windmove-up)
-(key-chord-define-global "jd" 'windmove-right-thorough)
-(key-chord-define-global "js" 'windmove-down)
+(key-chord-define-global ";a" 'windmove-left-thorough)
+(key-chord-define-global ";w" 'windmove-up)
+(key-chord-define-global ";d" 'windmove-right-thorough)
+(key-chord-define-global ";s" 'windmove-down)
+
 
 ;; Org mode is better with visual line mode
 (add-hook 'org-mode 'visual-line-mode)
 
 
-
+;; Bind Comment Region because I use it quite often
+(define-key global-map(kbd "C-M-c") 'comment-or-uncomment-region)
 
 
 ;; Open up global TODO on startup
